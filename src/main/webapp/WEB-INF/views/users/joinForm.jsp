@@ -38,13 +38,13 @@ $("#btnJoin").click(()=>{
 		type:"POST",
 		dataType:"json", // 응답할 때 데이터
 		data:JSON.stringify(data),
-		headers:{
+		headers:{ // http header에 들고 갈 요청 데이터
 			"Content-Type" : "application/json" // 나 json으로 날릴거야
 		}
 	}).done((res)=>{
 		if(res.code == 1){
 			console.log(res);
-			location.href = "/";
+			location.href = "/loginForm";
 		}
 	});
 });
