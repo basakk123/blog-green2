@@ -34,9 +34,9 @@ public class BoardsController {
 	 */
 	
 	@PutMapping("/boards/{id}")
-	public String update(@PathVariable Integer id, UpdateDto updateDto) {
+	public @ResponseBody CMRespDto<?> update(@PathVariable Integer id, @RequestBody UpdateDto updateDto) {
 		boardsService.게시글수정하기(id, updateDto);
-		return "redirect:/boards/" + id;
+		return new CMRespDto<>(1, "글 수정성공", null);
 	}
 
 	@GetMapping("/boards/{id}/updateForm")
@@ -47,9 +47,9 @@ public class BoardsController {
 	}
 
 	@DeleteMapping("/boards/{id}")
-	public String deleteBoards(@PathVariable Integer id) {
+	public @ResponseBody CMRespDto<?> deleteBoards(@PathVariable Integer id) {
 		boardsService.게시글삭제하기(id);
-		return "redirect:/";
+		return new CMRespDto<>(1, "글 삭제성공", null);
 	}
 
 	@PostMapping("/boards")

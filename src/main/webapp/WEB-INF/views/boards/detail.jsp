@@ -6,26 +6,29 @@
 	<br /> <br />
 
 
-		<div class="d-flex">
-		
-			<a href="/boards/${boards.id }/updateForm" class="btn btn-warning">수정하러가기</a>
+	<div class="d-flex">
 
-			<form>
-				<button class="btn btn-danger">삭제</button>
-			</form>
-		</div>
+		<a href="/boards/${boards.id}/updateForm" class="btn btn-warning">수정하러가기</a>
+
+		<form>
+			<input id="id" type="hidden" value="${boards.id}" />
+			<button id="btnDelete" class="btn btn-danger">삭제</button>
+		</form>
+	</div>
 
 
 	<br />
 	<div class="d-flex justify-content-between">
-		<h3>${boards.title }</h3>
-		<div>좋아요 수 : 10 <i id="iconHeart" class="fa-regular fa-heart"></i></div>
+		<h3>${boards.title}</h3>
+		<div>
+			좋아요 수 : 10 <i id="iconHeart" class="fa-regular fa-heart"></i>
+		</div>
 	</div>
 	<hr />
 
 	<div>${boards.content }</div>
 
-<script>
+	<script>
 $("#iconHeart").click((event)=>{
 	let check = $("#iconHeart").hasClass("fa-regular");
 	if(check == true){
@@ -39,6 +42,8 @@ $("#iconHeart").click((event)=>{
 	}
 });
 </script>
+
+	<script src="/js/boards.js"></script>
 
 </div>
 

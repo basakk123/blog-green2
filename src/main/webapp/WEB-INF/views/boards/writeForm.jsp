@@ -47,5 +47,7 @@
 	});
 </script>
 
+<script src="/js/boards.js"></script>
+
 <%@ include file="../layout/footer.jsp"%>
 

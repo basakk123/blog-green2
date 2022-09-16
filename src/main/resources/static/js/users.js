@@ -74,7 +74,6 @@ function checkUsername() {
 }
 
 function login() {
-	alert("login함수 실행됨")
 	//0. 통신 오브젝트 생성하기(JS 오브젝트)
 	let data = {
 		username: $("#username").val(),
