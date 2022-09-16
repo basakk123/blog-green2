@@ -74,24 +74,26 @@ function checkUsername() {
 }
 
 function login() {
-	alert("login 함수 실행됨");
+	alert("login함수 실행됨")
+	//0. 통신 오브젝트 생성하기(JS 오브젝트)
 	let data = {
 		username: $("#username").val(),
-		password: $("#password").val()
+		password: $("#password").val(),
+		remember: $("#remember").prop("checked")
 	};
 
 	$.ajax("/login", {
 		type: "POST",
-		dataType: "json", // 응답할 때 데이터
+		dataType: "json",      //응답 데이터(json으로 받고 싶어!)
 		data: JSON.stringify(data),
-		headers: { // http header에 들고 갈 요청 데이터
+		headers: {
 			"Content-Type": "application/json; charset=utf-8"
 		}
 	}).done((res) => {
 		if (res.code == 1) {
 			location.href = "/";
 		} else {
-			alert("로그인 실패, 아이디 패스워드를 확인해주세요");
+			alert("로그인 실패");
 		}
 	});
 }
