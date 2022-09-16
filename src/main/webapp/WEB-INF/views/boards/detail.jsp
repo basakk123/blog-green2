@@ -17,13 +17,28 @@
 
 
 	<br />
-	<div>
+	<div class="d-flex justify-content-between">
 		<h3>${boards.title }</h3>
+		<div>좋아요 수 : 10 <i id="iconHeart" class="fa-regular fa-heart"></i></div>
 	</div>
 	<hr />
 
 	<div>${boards.content }</div>
 
+<script>
+$("#iconHeart").click((event)=>{
+	let check = $("#iconHeart").hasClass("fa-regular");
+	if(check == true){
+		$("#iconHeart").removeClass("fa-regular");
+		$("#iconHeart").addClass("fa-solid");
+		$("#iconHeart").css("color", "red");
+	}else{
+		$("#iconHeart").removeClass("fa-solid");
+		$("#iconHeart").addClass("fa-regular");
+		$("#iconHeart").css("color", "black");
+	}
+});
+</script>
 
 </div>
 
