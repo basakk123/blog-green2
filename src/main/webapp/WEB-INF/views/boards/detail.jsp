@@ -2,6 +2,8 @@
 
 <%@ include file="../layout/header.jsp"%>
 
+<input id="page" type="hidden" value="${sessionScope.referer.page}">
+<input id="keyword" type="hidden" value="${sessionScope.referer.keyword}">
 <div class="container">
 	<br /> <br />
 

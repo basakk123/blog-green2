@@ -1,5 +1,8 @@
 package site.metacoding.red.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -49,6 +52,7 @@ public class BoardsController {
 	@DeleteMapping("/boards/{id}")
 	public @ResponseBody CMRespDto<?> deleteBoards(@PathVariable Integer id) {
 		boardsService.게시글삭제하기(id);
+		session.getAttribute("pagingDto");
 		return new CMRespDto<>(1, "글 삭제성공", null);
 	}
 
@@ -63,6 +67,11 @@ public class BoardsController {
 	public String getBoardList(Model model, Integer page, String keyword) { // 0 -> 0, 1->10, 2->20
 		PagingDto pagingDto = boardsService.게시글목록보기(page, keyword);
 		model.addAttribute("pagingDto", pagingDto);
+		
+		Map<String, Object> referer = new HashMap<>();
+		referer.put("page", pagingDto.getCurrentPage());
+		referer.put("keyword", pagingDto.getKeyword());
+		session.setAttribute("referer", referer);
 		return "boards/main";
 	}
 
